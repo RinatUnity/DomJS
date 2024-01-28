@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ 
+</style>
+<body>
+    <div>
+    </div>
+</body>
+<script>
+    let d = document.querySelector("div");
+for(let i = 0;i<100;i++){
+    let num = Math.round(Math.random()*100);
+    d.innerHTML+=`<div style ="height:30px;width:30px; display:inline-block;
+     text-align:center;">${num}</div>`;
+}
+
+
+ let arr = d.querySelectorAll("div > div");
+
+arr.forEach(function(v){
+    v.setAttribute("backgrounColor", "red");
+})
+ 
+
+arr.forEach(function(v){
+    
+    if(v.textContent > 70) 
+             {v.style.backgroundColor = "red";}
+             else if(v.textContent < 31){
+                v.style.backgroundColor = "green";
+             }
+})
+    let R = Math.round(Math.random()*256);
+    let G = Math.round(Math.random()*256);
+    let B = Math.round(Math.random()*256);
+let c = " ";
+
+ if(R>110 && G < 70 && B < 70){
+    c = "красный";
+ }else if(G>110 && R < 70 && B < 70){
+    c="зеленый";
+ }else if(B>110 && R < 70 && G < 70){
+    c="синий";
+ }else if(R>230 && G>230 && B>230){
+    c="белый";
+ }else if(R < 30 && G < 30 && B < 30){
+    c="черный";
+ }else if(R>230 && G>230 && B>230){
+    c="серый";
+ }else if(R < 30 && G>150 && B>150){
+    c="голубой";
+ }else if(Math.abs(R - B )< 20 && Math.abs(R - G) < 20 ){
+    c="серый";
+ }
+let hexR = R.toString(16);
+let hexG = G.toString(16);
+let hexB = B.toString(16);
+ 
+document.body.innerHTML+=`<div style = "height:100px; widtch:100px;background-color:rgb(${R},${G},${B});color:${textColor(R,G,B)};">цвет ${c}, #${hexR}${hexG}${hexB}</div>`;
+
+console.log(document.body.lastChild.style.backgroundColor);
+function textColor(r,g,b){
+   
+  if((r+b+g)<350){
+    return `white`;
+  }else{
+    return `black`;
+  }
+}
+
+</script>
+</html>
